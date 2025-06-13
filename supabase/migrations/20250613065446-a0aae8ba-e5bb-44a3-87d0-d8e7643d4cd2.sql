@@ -1,4 +1,3 @@
-
 -- Create user roles enum
 CREATE TYPE user_role AS ENUM ('customer', 'handyman', 'admin');
 
@@ -78,14 +77,21 @@ CREATE TABLE public.inquiries (
 
 -- Insert default services
 INSERT INTO public.services (name, description, category, base_price) VALUES
-('Plumbing Repair', 'Fix leaks, unclog drains, repair faucets', 'Plumbing', 75.00),
-('Electrical Installation', 'Install outlets, switches, light fixtures', 'Electrical', 85.00),
-('Carpentry Work', 'Custom shelving, furniture repair, trim work', 'Carpentry', 65.00),
-('Painting Services', 'Interior and exterior painting', 'Painting', 45.00),
-('HVAC Maintenance', 'Air conditioning and heating system service', 'HVAC', 95.00),
-('Home Cleaning', 'Deep cleaning and regular maintenance', 'Cleaning', 35.00),
-('Appliance Repair', 'Fix washers, dryers, refrigerators', 'Appliance Repair', 80.00),
-('Landscaping', 'Lawn care, garden maintenance, tree trimming', 'Landscaping', 55.00);
+('Plumbing Repair', 'Fix leaks, unclog drains, repair faucets and water heaters', 'Plumbing', 300.00),
+('Electrical Work', 'Install outlets, switches, light fixtures, and electrical repairs', 'Electrical', 400.00),
+('Carpentry Services', 'Custom furniture, door repairs, and wooden work', 'Carpentry', 350.00),
+('Painting Services', 'Interior and exterior painting, wall textures', 'Painting', 250.00),
+('AC Service & Repair', 'AC installation, maintenance, and repair', 'HVAC', 500.00),
+('Deep Cleaning', 'Complete home cleaning, sanitization, and pest control', 'Cleaning', 200.00),
+('Appliance Repair', 'Repair of refrigerators, washing machines, and other appliances', 'Appliance Repair', 450.00),
+('Garden Maintenance', 'Lawn care, plant maintenance, and garden design', 'Landscaping', 300.00),
+('Kitchen Repair', 'Modular kitchen repairs, cabinet fixing, and plumbing', 'Kitchen Repair', 400.00),
+('Furniture Assembly', 'Assemble and repair furniture, modular units', 'Furniture Repair', 350.00),
+('Mobile Repair', 'Smartphone and tablet repair services', 'Mobile Repair', 200.00),
+('TV Installation', 'Smart TV setup, wall mounting, and cable management', 'TV Installation', 300.00),
+('Internet Setup', 'WiFi installation, network setup, and troubleshooting', 'Internet Setup', 250.00),
+('Security Installation', 'CCTV cameras, door locks, and security systems', 'Security Installation', 600.00),
+('Home Maintenance', 'General repairs, maintenance, and handyman services', 'Home Maintenance', 300.00);
 
 -- Enable Row Level Security
 ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;

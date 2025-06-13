@@ -1,15 +1,16 @@
-
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Wrench } from 'lucide-react';
 
 const Footer = () => {
   const services = [
-    'General Repairs',
     'Electrical Work',
     'Plumbing Services',
     'Carpentry',
     'Painting',
-    'Home Security'
+    'HVAC Services',
+    'Home Security',
+    'Cleaning Services',
+    'General Repairs'
   ];
 
   const quickLinks = [
@@ -18,7 +19,9 @@ const Footer = () => {
     'Contact',
     'Emergency Service',
     'Get Quote',
-    'Reviews'
+    'Reviews',
+    'Blog',
+    'Careers'
   ];
 
   return (
@@ -32,11 +35,19 @@ const Footer = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
-              HandyPro
+            <div className="flex items-center space-x-2 mb-4">
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
+                <Wrench size={20} className="text-white" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                  Handyman
+                </span>
+                <span className="text-xs text-gray-400">Professional Services</span>
+              </div>
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">
-              Professional handyman services for all your home improvement needs. Quality workmanship guaranteed since 2010.
+              Your trusted partner for all home improvement and maintenance needs. Delivering quality service with a smile since 2010.
             </p>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
@@ -45,11 +56,11 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Mail size={16} className="text-blue-400" />
-                <span className="text-gray-300">info@handypro.com</span>
+                <span className="text-gray-300">contact@handyman.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin size={16} className="text-blue-400" />
-                <span className="text-gray-300">Metro Area & Surrounding Cities</span>
+                <span className="text-gray-300">Serving Metro Area & Surrounding Cities</span>
               </div>
             </div>
           </motion.div>
@@ -115,12 +126,12 @@ const Footer = () => {
               </div>
               <div className="space-y-2 text-gray-400">
                 <div className="flex justify-between">
-                  <span>Mon - Fri</span>
-                  <span>7AM - 7PM</span>
+                  <span>Monday - Friday</span>
+                  <span>7:00 AM - 7:00 PM</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Saturday</span>
-                  <span>8AM - 5PM</span>
+                  <span>8:00 AM - 5:00 PM</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Sunday</span>
@@ -130,9 +141,9 @@ const Footer = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-lg font-semibold mt-4"
+                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-lg font-semibold mt-4 hover:shadow-lg transition-all"
               >
-                24/7 Emergency
+                24/7 Emergency Service
               </motion.button>
             </div>
           </motion.div>
@@ -148,7 +159,7 @@ const Footer = () => {
         >
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-gray-400 text-sm">
-              © 2024 HandyPro. All rights reserved. Licensed & Insured.
+              © 2024 Handyman. All rights reserved. Licensed & Insured.
             </div>
             <div className="flex space-x-6 text-sm text-gray-400">
               <motion.a href="#" whileHover={{ color: '#ffffff' }} className="hover:text-white transition-colors">
