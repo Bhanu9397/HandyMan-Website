@@ -1,6 +1,6 @@
 
 import { motion } from 'framer-motion';
-import { Wrench, Zap, Droplets, Hammer, PaintBucket, Shield } from 'lucide-react';
+import { Wrench, Zap, Droplets, Hammer, PaintBucket, Shield, Wind, Sparkles } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { Tables } from '@/integrations/supabase/types';
@@ -41,6 +41,8 @@ const Services = () => {
       case 'plumbing': return Droplets;
       case 'carpentry': return Hammer;
       case 'painting': return PaintBucket;
+      case 'hvac': return Wind;
+      case 'cleaning': return Sparkles;
       case 'security': return Shield;
       default: return Wrench;
     }
@@ -53,9 +55,12 @@ const Services = () => {
 
   if (loading) {
     return (
-      <section id="services" className="py-20 bg-white">
+      <section id="services" className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-4 text-center">
-          Loading services...
+          <div className="animate-pulse">
+            <div className="h-8 bg-gray-300 dark:bg-gray-600 rounded w-48 mx-auto mb-4"></div>
+            <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-96 mx-auto"></div>
+          </div>
         </div>
       </section>
     );
@@ -63,7 +68,7 @@ const Services = () => {
 
   return (
     <>
-      <section id="services" className="py-20 bg-white">
+      <section id="services" className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -72,15 +77,15 @@ const Services = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               Our <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Services</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
               Professional handyman services for all your home improvement needs. Quality workmanship guaranteed.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {services.map((service, index) => {
               const IconComponent = getIconForCategory(service.category);
               
@@ -91,42 +96,27 @@ const Services = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  whileHover={{ y: -10, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
-                  className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:border-blue-200 transition-all duration-300"
+                  whileHover={{ y: -10, scale: 1.02 }}
+                  className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-lg border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-600 transition-all duration-300 group"
                 >
                   <div className="mb-6">
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center mb-4">
-                      <IconComponent className="text-white" size={32} />
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                      <IconComponent className="text-white" size={24} />
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-3">{service.name}</h3>
-                    <p className="text-gray-600 mb-4">{service.description}</p>
-                    <div className="text-2xl font-bold text-blue-600 mb-4">
-                      Starting at ${service.base_price}
-                    </div>
-                  </div>
-
-                  <div className="space-y-3 mb-6">
-                    <div className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                      <span className="text-gray-700 text-sm">Professional service</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                      <span className="text-gray-700 text-sm">Licensed & insured</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                      <span className="text-gray-700 text-sm">Quality guarantee</span>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{service.name}</h3>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm mb-3 line-clamp-2">{service.description}</p>
+                    <div className="text-xl font-bold text-blue-600 dark:text-blue-400 mb-4">
+                      ${service.base_price}
                     </div>
                   </div>
 
                   <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                     onClick={() => handleBookService(service)}
-                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-shadow duration-300"
+                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-300"
                   >
-                    Book Service
+                    Book Now
                   </motion.button>
                 </motion.div>
               );
@@ -141,7 +131,6 @@ const Services = () => {
         service={selectedService}
         onBookingSuccess={() => {
           setIsBookingModalOpen(false);
-          // You can add a success message here
         }}
       />
     </>
