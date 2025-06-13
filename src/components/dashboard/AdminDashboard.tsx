@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Users, Wrench, Calendar, MessageSquare, Plus, Edit, Trash2, CheckCircle, XCircle } from 'lucide-react';
+import { Users, Wrench, Calendar, MessageSquare, Plus, Edit, Trash2, CheckCircle, XCircle, Clock } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { Tables } from '@/integrations/supabase/types';
 import ServicesManager from './ServicesManager';
